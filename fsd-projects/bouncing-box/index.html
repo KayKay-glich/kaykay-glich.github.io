@@ -55,7 +55,7 @@
         box.on("click", handleBoxClick);
 
         // moves the Box to a new position on the screen along the X-Axis
-        function moveBoxTo(newPositionX) {
+        function moveBoxTo(newPositionX, newPositionY) {
           box.css("left", newPositionX);
         }
 
@@ -115,7 +115,65 @@
       }
 
 
-        
+        var positionY = 100;
+        var speedY = 8;
+
+        // Update moveBoxTo to handle Y position
+        function moveBoxTo(newPositionX, newPositionY) {
+          box.css("left", newPositionX);
+          box.css("top", newPositionY);
+        }
+
+        // Update update function to handle Y movement
+        function update() {
+          positionX += speed;
+          positionY += speedY;
+
+          // Check for collision with right edge
+          if (positionX + box.width() > boardWidth) {
+            positionX = boardWidth - box.width();
+            speed *= -1;
+          }
+          // Check for collision with left edge
+          if (positionX < 0) {
+            positionX = 0;
+            speed *= -1;
+          }
+
+          // Check for collision with bottom edge
+          if (positionY + box.height() > board.height()) {
+            positionY = board.height() - box.height();
+            speedY *= -1;
+          }
+          // Check for collision with top edge
+          if (positionY < 0) {
+            positionY = 0;
+            speedY *= -1;
+          }
+
+          moveBoxTo(positionX, positionY);
+          changeBoxText(points);
+        }
+
+        // Update handleBoxClick to reset Y position
+        function handleBoxClick() {
+          points++;
+          // Increase speed, keep direction
+          if (speed > 0) {
+            speed += 2;
+          } else {
+            speed -= 2;
+          }
+          if (speedY > 0) {
+            speedY += 2;
+          } else {
+            speedY -= 2;
+          }
+          positionX = 0;
+          positionY = 0;
+          moveBoxTo(positionX, positionY);
+          changeBoxText(points);
+        }
       })();
     </script>
   </body>
