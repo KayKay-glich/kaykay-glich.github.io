@@ -74,7 +74,7 @@ function makeGhost(id) {
 }
 
 // this generates a random speed value
-function decideSpeed() {
+funtion decideSpeed() {
   return (Math.random() * doubleMaxSpeed) / 2 - doubleMaxSpeed;
 }
 
@@ -84,7 +84,7 @@ function getId(number) {
 }
 
 // this adds a ghost into the HTML
-funtion addNewGhostElement(ghost, id) {
+function addNewGhostElement(ghost, id) {
   // this creates the HTML for a new ghost element
   var $ghost = $("<img>")
     .attr("id", id)
@@ -102,7 +102,7 @@ funtion addNewGhostElement(ghost, id) {
 //////////////////
 
 // this should move all of the ghosts
-function update) {
+function update) ;{
   // loop over the ghosts array. We use the maxGhosts variable instead of ghosts.length
   // to make seeing issues in the debugger slightly easier (in practice, you should use
   // ghosts.length, but do NOT change it here)
