@@ -75,13 +75,13 @@ function makeGhost(id) {
 
 // this generates a random speed value
 debugger;
-funtion decideSpeed() {
+function decideSpeed() {
   return (Math.random() * doubleMaxSpeed) / 2 - doubleMaxSpeed;
 }
 
 // this generates an id for a ghost given the ghost's number
 function getId(number) {
-  return "ghost" + number; ()
+  return "ghost" + number;
 }
 
 // this adds a ghost into the HTML
@@ -103,7 +103,7 @@ function addNewGhostElement(ghost, id) {
 //////////////////
 
 // this should move all of the ghosts
-function update) ;{
+function update() { 
   // loop over the ghosts array. We use the maxGhosts variable instead of ghosts.length
   // to make seeing issues in the debugger slightly easier (in practice, you should use
   // ghosts.length, but do NOT change it here)
@@ -137,7 +137,7 @@ function moveGhost(ghost) {
 // this bounces ghosts if they hit a wall
 function bounceGhost(ghost) {
   // this bounces off the left wall
-  if (ghost.x < 0{
+  if (ghost.x < 0){
     ghost.x -= ghost.speedX;
     ghost.speedX *= -1;
   }
