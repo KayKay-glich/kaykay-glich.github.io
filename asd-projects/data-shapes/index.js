@@ -100,7 +100,7 @@ $(document).ready(function () {
     handleBad(currentShape, repeat);
 
     }
-  }
+  
   
   
   /////////////////////////////////////////////////
@@ -279,4 +279,4 @@ $(document).ready(function () {
     animationDetails.angle += 4;
     $("#shape").css("transform", `rotate(${animationDetails.angle}deg)`);
   }
-});
+})
