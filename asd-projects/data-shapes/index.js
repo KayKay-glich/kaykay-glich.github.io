@@ -99,9 +99,6 @@ $(document).ready(function () {
     let repeat = currentShape.repeat;
     handleBad(currentShape, repeat);
 
-    function handleBad(){
-      resetDisplay();
-      currentIdex = Math.floor(Math.random() * dataShapes.length);
     }
   }
   
