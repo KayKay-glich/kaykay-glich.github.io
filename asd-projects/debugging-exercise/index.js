@@ -74,6 +74,7 @@ function makeGhost(id) {
 }
 
 // this generates a random speed value
+debugger;
 funtion decideSpeed() {
   return (Math.random() * doubleMaxSpeed) / 2 - doubleMaxSpeed;
 }

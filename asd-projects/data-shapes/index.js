@@ -98,8 +98,12 @@ $(document).ready(function () {
     let currentShape = dataShapes[currentIndex];
     let repeat = currentShape.repeat;
     handleBad(currentIndexShape, repeat);
+    function handleBad() {}
+    resetDisplay();
+    currentIndex = Math.floor(Math.random() * dataShapes.length)
   }
-
+  
+  
   /////////////////////////////////////////////////
   // ALL OF YOUR CODE SHOULD GO ABOVE HERE ////////
   /////////////////////////////////////////////////
