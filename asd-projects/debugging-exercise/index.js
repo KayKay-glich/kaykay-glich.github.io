@@ -50,10 +50,10 @@ function makeGhost(id) {
 
   // this gives the ghost object all of the data that it needs to store
   ghost.id = "#" + id;
-  ghost.x = Math.random() * maXX + ghostRadius;
+  ghost.x = Math.random() * maxX + ghostRadius;
   ghost.y = Math.random() * maxY + ghostRadius;
   ghost.speedX = decideSpeed();
-  ghost.speedY = desideSpeed();
+  ghost.speedY = decideSpeed();
 
   // assign a random color for the ghost's glow
   const colors = [
@@ -74,7 +74,7 @@ function makeGhost(id) {
 }
 
 // this generates a random speed value
-debugger;
+
 function decideSpeed() {
   return (Math.random() * doubleMaxSpeed) / 2 - doubleMaxSpeed;
 }
@@ -108,16 +108,18 @@ function update() {
   // to make seeing issues in the debugger slightly easier (in practice, you should use
   // ghosts.length, but do NOT change it here)
   for (var i = 0; i < maxGhosts; i++) {
-    var ghost = ghosts[j];
+    var ghost = ghosts[i];
 
     // move the ghost
+    debugger;
     moveGhost(ghost);
 
     // bounce the ghost, if it hits a wall
-    bounceGhost(ghost);
+  
+    bounceGhost(ghost); 
 
     // redraw the ghost on the screen after it moves
-    updateGhostOnScreen(ghost);
+    updateGhostOnScreen(ghost); 
 
     // make sure the ghost is oriented correctly
     updateOrientation(ghost);
@@ -138,7 +140,7 @@ function moveGhost(ghost) {
 function bounceGhost(ghost) {
   // this bounces off the left wall
   if (ghost.x < 0){
-    ghost.x -= ghost.speedX;
+    ghost.x += ghost.speedX;
     ghost.speedX *= -1;
   }
   // this bounces off the right wall
@@ -160,7 +162,7 @@ function bounceGhost(ghost) {
 
 // this redraws the ghost's position on the screen
 function updateGhostOnScreen(ghost) {
-  maxGhosts = 1;
+  maxGhosts = 10;
 
   // these lines redraw the ghost's position
   $(ghost.id).css("left", ghost.x);
