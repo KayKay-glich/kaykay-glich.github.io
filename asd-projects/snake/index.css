@@ -1,13 +1,13 @@
 
 body {
-  background-color: darkgreen;
+  background-color: rgb(172, 247, 172);
 }
 
 #board {
   width: 440px;
   height: 440px;
-  border: 1px solid white;
-  background-color: black;
+  border: 1px solid rgb(230, 255, 249);
+  background-color: rgb(90, 184, 90);
 }
 
 #score, #highScore {
