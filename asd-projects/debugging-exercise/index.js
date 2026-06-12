@@ -139,24 +139,28 @@ function moveGhost(ghost) {
 // this bounces ghosts if they hit a wall
 function bounceGhost(ghost) {
   // this bounces off the left wall
-  if (ghost.x < 0){
-    ghost.x += ghost.speedX;
+  if (ghost.x <= 0){
+   // ghost.x += ghost.speedX;
     ghost.speedX *= -1;
+    console.log ("right", ghost.x)
   }
   // this bounces off the right wall
-  else if (ghost.x > boardWidth) {
-    ghost.x -= ghost.speedX;
+  else if (ghost.x >= boardWidth) {
+   // ghost.x -= ghost.speedX;
     ghost.speedX *= -1;
+     console.log ("left", ghost.x)
   }
   // this bounces off the top wall
-  if (ghost.y < 0) {
-    ghost.y -= ghost.speedY;
+  if (ghost.y <= 0) {
+    // ghost.y -= ghost.speedY;
     ghost.speedY *= -1;
+     console.log ("down", ghost.y)
   }
   // this bounces off the bottom wall
-  else if (ghost.y > boardHeight) {
-    ghost.y -= ghost.speedY;
-    ghost.speedX *= -1;
+  else if (ghost.y >= boardHeight) {
+    // ghost.y -= ghost.speedY;
+    ghost.speedY *= -1;
+    console.log ("up", ghost.y)
   }
 }
 
