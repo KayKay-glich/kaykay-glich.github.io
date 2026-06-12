@@ -132,7 +132,7 @@ function update() {
 
 // this moves ghosts in memory but doesn't update them on the screen
 function moveGhost(ghost) {
-  ghost.x = ghost.speedX;
+  ghost.x += ghost.speedX;
   ghost.y += ghost.speedY;
 }
 
