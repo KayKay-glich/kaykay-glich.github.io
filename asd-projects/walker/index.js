@@ -36,6 +36,16 @@ function runProgram(){
 };
 
 function handleKeyDown(event){
+  if(event.key === "ArrowLeft"){
+    walker.speedX = -5;
+  }else if(event.key === "ArrowRight"){
+    walker.speedX = -5;
+  }else if(event.key === "ArrowUp"){
+    walker.speedY = -5;
+  }else if(event.key === "ArrowDown"){
+    walker.speedY = -5;
+  }
+
 if (event.which === KEY.LEFT) {
   console.log("left pressed");
 }
@@ -49,6 +59,31 @@ if (event.which === KEY.DOWN) {
   console.log("down pressed");
 }
 
+var walker = {
+  x: 0,
+  y: 0,
+  speedX: 0,
+  speedY: 0
+};
+
+function repositionGameItem(){
+  walker.x = walker.x + walker.speedX
+  walker.y = walker.Y + walker.speedY
+  function newFrame(){
+    repositionGameItem();
+    console.log(walker.x, walker.y);
+  }
+}
+window.addEventListener('keyup', handleKeyUp);
+
+function handlekeyUp(event){
+  if(event.key === "ArrowLeft" || eventkey === "ArrowRight"){
+    walker.speedx = 0;
+  }
+  if (event.key === "ArrowUp" || event.key === "ArrowDown"){
+    walker.speedY = 0;
+  }
+}
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -84,5 +119,19 @@ repositionGameItem()
     // turn off event handlers
     $(document).off();
   }
-  
+  function redrawGameItem(){
+    $("#walker").css("left, walker.x");
+    $("#walker").css("top, walker.x");
+  }
+  function NewFrame(){
+    repositionGameItem();
+    redrawGameItem();
+    console.log("Walker position:", walker.x, walker.y);
+  }
+
+  function wallCollision(){
+    if (walker.x < 0 || walker.x > $("#board").height()){
+      walker.y -= walker.speedY;
+    }
+  }
 }
