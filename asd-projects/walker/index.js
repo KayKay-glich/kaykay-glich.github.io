@@ -1,8 +1,8 @@
 /* global $, sessionStorage */
 
 $(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
-  
-function runProgram(){
+
+function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////// SETUP /////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -10,12 +10,11 @@ function runProgram(){
   // Constant Variables
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
-  
+
   // Game Item Objects
 
-
   // one-time setup
-  var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
+  var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL); // execute newFrame every 0.0166 seconds (60 Frames per second)
 
   /* 
   This section is where you set up event listeners for user input.
@@ -23,67 +22,29 @@ function runProgram(){
 
   Note: You can have multiple event listeners for different types of events.
   */
-  $(document).on('keydown', handleKeyDown); 
-}
-  console.log(event.which);                
-  
+  $(document).on("keydown", handleKeyDown);
+  $(document).on("keyup", handleKeyUp);
+
+  var walker = {
+    x: 0,
+    y: 0,
+    speedX: 0,
+    speedY: 0,
+  };
+
   const KEY = {
-  ENTER: 13,
-  LEFT: 37,
-  UP: 38,
-  RIGHT: 39,
-  DOWN: 40,
-};
+    ENTER: 13,
+    LEFT: 37,
+    UP: 38,
+    RIGHT: 39,
+    DOWN: 40,
+  };
 
-function handleKeyDown(event){
-  if(event.key === "ArrowLeft"){
-    walker.speedX = -5;
-  }else if(event.key === "ArrowRight"){
-    walker.speedX = -5;
-  }else if(event.key === "ArrowUp"){
-    walker.speedY = -5;
-  }else if(event.key === "ArrowDown"){
-    walker.speedY = -5;
+  function repositionGameItem() {
+    walker.x = walker.x + walker.speedX;
+    walker.y = walker.Y + walker.speedY;
   }
 
-if (event.which === KEY.LEFT) {
-  console.log("left pressed");
-}
-if (event.which === KEY.UP) {
-  console.log("up pressed");
-}
-if (event.which === KEY.RIGHT) {
-  console.log("right pressed");
-}
-if (event.which === KEY.DOWN) {
-  console.log("down pressed");
-}
-
-var walker = {
-  x: 0,
-  y: 0,
-  speedX: 0,
-  speedY: 0
-};
-
-function repositionGameItem(){
-  walker.x = walker.x + walker.speedX
-  walker.y = walker.Y + walker.speedY
-  function newFrame(){
-    repositionGameItem();
-    console.log(walker.x, walker.y);
-  }
-}
-window.addEventListener('keyup', handleKeyUp);
-
-function handlekeyUp(event){
-  if(event.key === "ArrowLeft" || eventkey === "ArrowRight"){
-    walker.speedx = 0;
-  }
-  if (event.key === "ArrowUp" || event.key === "ArrowDown"){
-    walker.speedY = 0;
-  }
-}
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -93,10 +54,10 @@ function handlekeyUp(event){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    
-
+    repositionGameItem();
+    redrawGameItem();
+    console.log("Walker position:", walker.x, walker.y);
   }
-  
   /* 
   This section is where you set up the event handlers for user input.
   For example, if you wanted to make an event handler for a click event, you should rename this function to 'handleClick', then write the code that should execute when the click event occurs.
@@ -104,14 +65,27 @@ function handlekeyUp(event){
   Note: You can have multiple event handlers for different types of events.
   */
   function handleKeyDown(event) {
-    console.log(event.which);
+    if (event.which === KEY.LEFT) {
+      console.log("left pressed");
+    }
+    if (event.which === KEY.UP) {
+      console.log("up pressed");
+    }
+    if (event.which === KEY.RIGHT) {
+      console.log("right pressed");
+    }
+    if (event.which === KEY.DOWN) {
+      console.log("down pressed");
+    }
   }
 
+  function handleKeyUp(event) {
+    
+  }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-repositionGameItem()
-  
+
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
@@ -119,19 +93,16 @@ repositionGameItem()
     // turn off event handlers
     $(document).off();
   }
-  function redrawGameItem(){
+  function redrawGameItem() {
     $("#walker").css("left, walker.x");
     $("#walker").css("top, walker.x");
   }
-  function NewFrame(){
-    repositionGameItem();
-    redrawGameItem();
-    console.log("Walker position:", walker.x, walker.y);
-  }
 
-  function wallCollision(){
-    if (walker.x < 0 || walker.x > $("#board").height()){
+  function wallCollision() {
+    if (walker.x < 0 || walker.x > $("#board").height()) {
       walker.y -= walker.speedY;
+
+      
     }
   }
 }
