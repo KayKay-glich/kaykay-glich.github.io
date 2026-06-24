@@ -24,9 +24,30 @@ function runProgram(){
   Note: You can have multiple event listeners for different types of events.
   */
   $(document).on('keydown', handleKeyDown); 
+}
   console.log(event.which);                
   
+  const KEY = {
+  ENTER: 13,
+  LEFT: 37,
+  UP: 38,
+  RIGHT: 39,
+  DOWN: 40,
+};
 
+function handleKeyDown(event){
+if (event.which === KEY.LEFT) {
+  console.log("left pressed");
+}
+if (event.which === KEY.UP) {
+  console.log("up pressed");
+}
+if (event.which === KEY.RIGHT) {
+  console.log("right pressed");
+}
+if (event.which === KEY.DOWN) {
+  console.log("down pressed");
+}
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -47,8 +68,8 @@ function runProgram(){
   
   Note: You can have multiple event handlers for different types of events.
   */
-  function handleEvent(event) {
-
+  function handleKeyDown(event) {
+    console.log(event.which);
   }
 
   ////////////////////////////////////////////////////////////////////////////////
