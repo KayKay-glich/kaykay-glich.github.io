@@ -56,6 +56,7 @@ function runProgram() {
   function newFrame() {
     repositionGameItem();
     redrawGameItem();
+    wallCollision();
     console.log("Walker position:", walker.x, walker.y);
   }
   /* 
