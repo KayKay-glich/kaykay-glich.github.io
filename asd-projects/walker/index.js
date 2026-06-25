@@ -42,7 +42,7 @@ function runProgram() {
 
   function repositionGameItem() {
     walker.x = walker.x + walker.speedX;
-    walker.y = walker.Y + walker.speedY;
+    walker.y = walker.y + walker.speedY;
   }
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -65,22 +65,32 @@ function runProgram() {
   Note: You can have multiple event handlers for different types of events.
   */
   function handleKeyDown(event) {
+
     if (event.which === KEY.LEFT) {
+      walker.speedX = -5;
       console.log("left pressed");
     }
     if (event.which === KEY.UP) {
+      walker.speedY = -5;
       console.log("up pressed");
     }
     if (event.which === KEY.RIGHT) {
+      walker.speedX = 5;
       console.log("right pressed");
     }
     if (event.which === KEY.DOWN) {
+      walker.speedY = 5;
       console.log("down pressed");
     }
   }
 
   function handleKeyUp(event) {
-    
+    if (event.which === KEY.LEFT || event.which === KEY.RIGHT){
+      walker.speedX = 0;
+    }
+    if (event.which === KEY.UP || event.which === KEY.DOWN){
+      walker.speedY = 0;
+    }
   }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -100,8 +110,11 @@ function runProgram() {
 
   function wallCollision() {
     if (walker.x < 0 || walker.x > $("#board").height()) {
-      walker.y -= walker.speedY;
-
+      walker.x -= walker.speedX;
+      
+      if (walker.y < 0 || walker.y > $("#board").height()){
+        walker.y -= walker.speedY;
+      }
       
     }
   }
