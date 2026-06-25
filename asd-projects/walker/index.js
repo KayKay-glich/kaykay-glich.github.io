@@ -104,18 +104,18 @@ function runProgram() {
     $(document).off();
   }
   function redrawGameItem() {
-    $("#walker").css("left, walker.x");
-    $("#walker").css("top, walker.x");
+    $("#walker").css("left", walker.x);
+    $("#walker").css("top", walker.y);
   }
 
   function wallCollision() {
-    if (walker.x < 0 || walker.x > $("#board").height()) {
+    if (walker.x < 0 || walker.x > $("#board").width()) {
       walker.x -= walker.speedX;
-      
+    }
       if (walker.y < 0 || walker.y > $("#board").height()){
         walker.y -= walker.speedY;
       }
       
     }
   }
-}
+
