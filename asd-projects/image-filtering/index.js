@@ -63,9 +63,18 @@ function applyFilter(){
 
 
 // TODO 4: Create reddify filter function
+const RED = 200;
 
+function reddify(pixel){
 
-// TODO 7 & 8: Create more filter functions
+  pixel[0] = RED;
+
+}
+var testArray = [100, 100, 100];
+
+reddify(testArray);
+
+console.log(testArray); // Should show [200, 100, 100]
 
 
 // CHALLENGE code goes below here
