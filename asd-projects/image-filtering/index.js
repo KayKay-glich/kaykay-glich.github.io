@@ -21,7 +21,11 @@ function resetAndRender() {
 function applyAndRender() {
   // Multiple TODOs: Call your apply function(s) here
 
-  applyFilter()
+  applyFilter(increaseGreenByBlue);
+
+  applyFilter(decreaseBlue);
+
+  applyFilter(reddify);
 
   // do not change the below line of code
   render($("#display"), image);
@@ -32,7 +36,7 @@ function applyAndRender() {
 /////////////////////////////////////////////////////////
 
 // TODO 1, 2, 3 & 5: Create the applyFilter function here
-function applyFilter(){
+function applyFilter(filterFunction){
 
   for (let i = 0; i < image.length; i++){
     for (let j = 0; j < image[i].length; j++){
@@ -42,16 +46,24 @@ function applyFilter(){
     let pixel = image[i][j];
     let pixelArray = rgbStringToArray(pixel);
 
+    filterFunction(pixelArray);
+
     // This is where I’ll modify the color values later
     pixelArray[RED] = 200;
 
     let updatedPixel = rgbArrayToString(pixelArray);
 
+
     image [i][j] = updatedPixel;
+
+  
+  
     }
   }
 }
 
+
+    
 
 // pixel looks like "rgb(150, 150, 150)"
 // pixelArray looks like [150, 150, 150]
@@ -60,21 +72,57 @@ function applyFilter(){
 
 
 // TODO 6: Create the keepInBounds function
-
+function keepInBound(value){
+  if (value < 0) {
+    return 0;
+  } else if (value > 255){
+    return 255
+  }else {
+    return value;
+  }
+}
+function keepInBounds(value){
+  return value < 0 ? 0 : (value > 255 ? 255 : value);
+}
+console.log(keepInBounds(-20)); // should print 0
+console.log(keepInBounds(300)); // should print 255
+console.log(keepInBounds(125)); // should print 125
 
 // TODO 4: Create reddify filter function
-const RED = 200;
+
 
 function reddify(pixel){
 
-  pixel[0] = RED;
+  pixel[RED] = 200;
 
 }
 var testArray = [100, 100, 100];
 
 reddify(testArray);
 
-console.log(testArray); // Should show [200, 100, 100]
+console.log(testArray); 
 
+function decreaseBlue(pixel) {
+  var newBlue = pixel[BLUE] - 50;
+    pixel[BLUE] = keepInBounds(newBlue);
+    return pixel; 
+}
+
+
+function increaseGreenByBlue(pixel) {
+  
+  let currentBlue = pixel[BLUE];
+  
+  
+  let newGreen = pixel[GREEN] + currentBlue;
+  
+  
+  newGreen = keepInBounds(newGreen);
+  
+  
+  pixel[GREEN] = newGreen;
+  
+  return pixel;
+}
 
 // CHALLENGE code goes below here
