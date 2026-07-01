@@ -27,7 +27,7 @@ function applyAndRender() {
 
   applyFilter(reddify);
 
-  applyFilter(reddify);
+
 
   // do not change the below line of code
   render($("#display"), image);
@@ -73,14 +73,20 @@ function applyFilter(filterFunction){
 // TODO 9 Create the applyFilterNoBackground function
 
 function applyFilterNoBackground(filterFunction) {
-  // Store the background color from the top-left corner
+
+applyFilterNoBackground(decreaseBlue);
+
+applyFilterNoBackground(reddify);
+
+applyFilterNoBackground(increaseGreenByBlue);
+  
   var backgroundColor = image[0][0];
 
-  // Loop through every pixel in the image
+
   for (var i = 0; i < image.length; i++) {
     for (var j = 0; j < image[i].length; j++) {
       
-      // Check if the current pixel is strictly different from the background color
+    
       if (image[i][j] !== backgroundColor) {
         
         
