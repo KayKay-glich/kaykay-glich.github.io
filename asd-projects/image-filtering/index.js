@@ -27,7 +27,11 @@ function applyAndRender() {
 
   applyFilter(reddify);
 
+applyFilterNoBackground(decreaseBlue);
 
+applyFilterNoBackground(reddify);
+
+applyFilterNoBackground(increaseGreenByBlue);
 
   // do not change the below line of code
   render($("#display"), image);
@@ -74,11 +78,7 @@ function applyFilter(filterFunction){
 
 function applyFilterNoBackground(filterFunction) {
 
-applyFilterNoBackground(decreaseBlue);
 
-applyFilterNoBackground(reddify);
-
-applyFilterNoBackground(increaseGreenByBlue);
   
   var backgroundColor = image[0][0];
 
